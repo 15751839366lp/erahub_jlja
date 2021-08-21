@@ -13,10 +13,11 @@ public class Result implements Serializable {
 
     /**
      * 返回结果和状态，下同
+     *
      * @param data
      * @return
      */
-    public static Result succ(Object data){
+    public static Result succ(Object data) {
         Result r = new Result();
         r.setCode(200);
         r.setMsg("操作成功");
@@ -27,6 +28,14 @@ public class Result implements Serializable {
     public static Result succ(String msg, Object data) {
         Result r = new Result();
         r.setCode(200);
+        r.setData(data);
+        r.setMsg(msg);
+        return r;
+    }
+
+    public static Result succ(int code, String msg, Object data) {
+        Result r = new Result();
+        r.setCode(code);
         r.setData(data);
         r.setMsg(msg);
         return r;
@@ -48,4 +57,11 @@ public class Result implements Serializable {
         return r;
     }
 
+    public static Result fail(int code, String msg, Object data) {
+        Result r = new Result();
+        r.setCode(code);
+        r.setData(data);
+        r.setMsg(msg);
+        return r;
+    }
 }
