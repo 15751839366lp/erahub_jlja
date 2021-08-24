@@ -1,7 +1,7 @@
 package com.erahub.jlja.shiro;
 
-import com.erahub.jlja.entity.User;
-import com.erahub.jlja.service.UserService;
+import com.erahub.jlja.login.entity.User;
+import com.erahub.jlja.login.service.UserService;
 import com.erahub.jlja.util.JwtUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -30,7 +30,12 @@ public class AccountRealm extends AuthorizingRealm {
         return null;
     }
 
-    //登陆处理
+    /**
+     * 认证处理
+     * @param authenticationToken
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         JwtToken jwtToken = (JwtToken) authenticationToken;
@@ -41,7 +46,7 @@ public class AccountRealm extends AuthorizingRealm {
         if(user == null){
             throw new UnknownAccountException("账号不存在");
         }
-        if(user.getStatus() == -1){
+        if(user.getLocked()){
             throw new LockedAccountException("账号已被锁定");
         }
 

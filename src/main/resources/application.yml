@@ -1,13 +1,23 @@
 # 应用服务 WEB 访问端口
 server:
-  port: 8080
+  port: 8888
 
 spring:
-
   # 应用名称
   application:
     name: jlja
-
+  mvc:
+    #    hiddenmethod:
+    #      filter:
+    #        enabled: true
+    view:
+      prefix: /
+      suffix: .html
+    static-path-pattern: /**
+    resources:
+      static-locations:
+        - classpath:/templates/
+        - classpath:/static/
   # DataSource Config
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,7 +25,7 @@ spring:
     username: root
     password: 123456
 mybatis-plus:
-  mapper-locations: classpath*:/mapper/**Mapper.xml
+  mapper-locations: classpath*:/mapper/**/**Mapper.xml
 
 # 配置redis连接
 shiro-redis:

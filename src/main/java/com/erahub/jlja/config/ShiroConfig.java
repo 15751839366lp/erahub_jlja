@@ -29,14 +29,17 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
     @Autowired
     JwtFilter jwtFilter;
+
     @Bean
     public SessionManager sessionManager(RedisSessionDAO redisSessionDAO) {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         sessionManager.setSessionDAO(redisSessionDAO);
         return sessionManager;
     }
+
     @Bean
     public DefaultWebSecurityManager securityManager(AccountRealm accountRealm,
                                                      SessionManager sessionManager,
@@ -59,6 +62,7 @@ public class ShiroConfig {
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         Map<String, String> filterMap = new LinkedHashMap<>();
+        //添加路径访问的权限
         filterMap.put("/**", "jwt"); // 主要通过注解方式校验权限
         chainDefinition.addPathDefinitions(filterMap);
         return chainDefinition;

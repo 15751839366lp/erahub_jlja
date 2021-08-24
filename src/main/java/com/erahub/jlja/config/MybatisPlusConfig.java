@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan("com.markerhub.mapper")
+@MapperScan("com.erahub.jlja.**.mapper")
 public class MybatisPlusConfig {
 
     // 分页

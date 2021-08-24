@@ -1,5 +1,6 @@
 package com.erahub.jlja;
 
+
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -13,6 +14,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 // 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
 public class CodeGenerator {
 
@@ -50,7 +52,9 @@ public class CodeGenerator {
         gc.setServiceName("%sService");
         mpg.setGlobalConfig(gc);
 
-        // 数据源配置
+        /**
+         * 配置数据源
+         */
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://localhost:3306/erahub_jlja?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
         // dsc.setSchemaName("public");
@@ -62,7 +66,10 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(null);
-        pc.setParent("com.erahub.jlja");
+        /**
+         * 修改模块
+         */
+        pc.setParent("com.erahub.jlja.login");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -81,11 +88,14 @@ public class CodeGenerator {
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
         // 自定义配置会被优先输出
+        /**
+         * 修改模块
+         */
         focList.add(new FileOutConfig(templatePath) {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper/"
+                return projectPath + "/src/main/resources/mapper/login/"
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
@@ -107,7 +117,10 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix("m_");
+        /**
+         * 修改表前缀
+         */
+        strategy.setTablePrefix("sys_");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
