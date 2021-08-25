@@ -64,6 +64,7 @@ public class ShiroConfig {
         Map<String, String> filterMap = new LinkedHashMap<>();
         //添加路径访问的权限
         filterMap.put("/**", "jwt"); // 主要通过注解方式校验权限
+        filterMap.put("/**/jump/**", "anon"); // 主要通过注解方式校验权限
         chainDefinition.addPathDefinitions(filterMap);
         return chainDefinition;
     }

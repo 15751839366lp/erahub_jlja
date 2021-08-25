@@ -16,9 +16,10 @@ $(function () {
                 } else {
                     var data = result["data"];
                     window.localStorage.token = data["token"];
-                    $("#toIndexForm").attr("action",url + "/user/toIndex")
-                    $('input[name="token"]').val(window.localStorage.token)
-                    $("#toIndexForm").submit();
+                    window.location.href = url + "/user/jump/toIndex";
+                    // $("#toIndexForm").attr("action",url + "/user/toIndex")
+                    // $('input[name="token"]').val(window.localStorage.token)
+                    // $("#toIndexForm").submit();
                 }
 
             },

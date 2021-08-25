@@ -13,6 +13,8 @@ import com.google.common.collect.ImmutableMap;
 import net.sf.saxon.expr.Component;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.subject.SubjectContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,20 +69,35 @@ public class UserController {
         response.setHeader("Access-Control-Expose-Headers", "Authorization");
         // 用户可以另一个接口
 //        model.addAllAttributes();
-        Result result = Result.succ(MapUtil.builder()
+        return Result.succ(MapUtil.builder()
                 .put("user",user)
                 .put("token",jwt)
                 .map()
         );
-        return result;
     }
 
-    @ResponseBody
-    @PostMapping("/toIndex")
+//    @ResponseBody
+    @GetMapping("/jump/toIndex")
     @RequiresAuthentication
-    public Result toIndex() {
-        return null;
+    public String toIndex() {
+        return "index";
     }
+
+    /**
+     * 登录
+     *
+     */
+    @ResponseBody
+    @CrossOrigin
+    @PostMapping("/getIndexData")
+    public Result login() {
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        return Result.succ(MapUtil.builder()
+                .put("user",user)
+                .map()
+        );
+    }
+
 
     // 退出
     @GetMapping("/logout")
