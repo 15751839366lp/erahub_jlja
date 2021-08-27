@@ -41,6 +41,7 @@ public class GlobalExceptionHandler {
         log.error("Assert异常:-------------->{}",e.getMessage());
         return Result.fail(e.getMessage());
     }
+
     /**
      * @Validated 校验错误异常处理
      */
@@ -52,4 +53,5 @@ public class GlobalExceptionHandler {
         ObjectError objectError = bindingResult.getAllErrors().stream().findFirst().get();
         return Result.fail(objectError.getDefaultMessage());
     }
+
 }

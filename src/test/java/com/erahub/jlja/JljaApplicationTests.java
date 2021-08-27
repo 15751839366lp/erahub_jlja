@@ -24,17 +24,6 @@ class JljaApplicationTests {
 
     @Test
     void queryData(){
-//        User user = new User();
-//        user.setUsername("lp");
-//        user.setPassword("123456");
-//        user.setCreateTime(LocalDateTime.now());
-//        user.setUpdateTime(LocalDateTime.now());
-        //添加
-//        userService.save(user);
-        //查询
-        User user = userService.getById(3L);
-        //删除
-//        userService.removeByMap( ImmutableMap.of("id", 2L));
-        System.out.println(user.toString());
+
     }
 }

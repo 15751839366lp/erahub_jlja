@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -53,21 +56,29 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
+    @JsonSerialize
+    @JsonDeserialize
     private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
+    @JsonSerialize
+    @JsonDeserialize
     private LocalDateTime updateTime;
 
     /**
      * 最后登录时间
      */
+    @JsonSerialize
+    @JsonDeserialize
     private LocalDateTime lastLogin;
 
     /**
      * 删除时间
      */
+    @JsonSerialize
+    @JsonDeserialize
     private LocalDateTime deleteTime;
 
     /**
