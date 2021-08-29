@@ -36,8 +36,10 @@ public class AccountController {
     @CrossOrigin
     @PostMapping("/login")
     public Result login(@Validated @RequestBody LoginDto loginDto, HttpServletResponse response) {
-        User user = userService.getOne(new QueryWrapper<User>().eq("username", loginDto.getUsername()));
-        Assert.notNull(user, "用户不存在");
+        User user = userService.getOne(new QueryWrapper<User>()
+                .eq("username", loginDto.getUsername())
+                .eq("password", loginDto.getPassword()));
+        Assert.notNull(user, "用户名或密码错误");
 //        if(!user.getPassword().equals(SecureUtil.md5(loginDto.getPassword()))) {
 //            return Result.fail("密码错误！");
 //        }
@@ -69,8 +71,8 @@ public class AccountController {
 
 
     // 退出
+    //    @RequiresAuthentication
     @GetMapping("/logout")
-    @RequiresAuthentication
     public Result logout() {
         SecurityUtils.getSubject().logout();
         return Result.succ("注销成功");
