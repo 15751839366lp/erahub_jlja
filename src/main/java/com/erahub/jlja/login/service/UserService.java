@@ -2,6 +2,7 @@ package com.erahub.jlja.login.service;
 
 import com.erahub.jlja.login.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>
@@ -12,6 +13,4 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-08-23
  */
 public interface UserService extends IService<User> {
-
-
 }
