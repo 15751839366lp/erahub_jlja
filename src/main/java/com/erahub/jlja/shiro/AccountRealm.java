@@ -1,7 +1,7 @@
 package com.erahub.jlja.shiro;
 
-import com.erahub.jlja.login.entity.User;
-import com.erahub.jlja.login.service.UserService;
+import com.erahub.jlja.authoritymanage.entity.User;
+import com.erahub.jlja.authoritymanage.service.UserService;
 import com.erahub.jlja.util.JwtUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

@@ -1,6 +1,6 @@
-package com.erahub.jlja.login.mapper;
+package com.erahub.jlja.authoritymanage.mapper;
 
-import com.erahub.jlja.login.entity.User;
+import com.erahub.jlja.authoritymanage.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

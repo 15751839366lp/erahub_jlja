@@ -1,8 +1,7 @@
-package com.erahub.jlja.login.service;
+package com.erahub.jlja.authoritymanage.service;
 
-import com.erahub.jlja.login.entity.User;
+import com.erahub.jlja.authoritymanage.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>

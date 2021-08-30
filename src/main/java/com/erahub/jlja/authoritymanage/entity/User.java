@@ -1,4 +1,4 @@
-package com.erahub.jlja.login.entity;
+package com.erahub.jlja.authoritymanage.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;

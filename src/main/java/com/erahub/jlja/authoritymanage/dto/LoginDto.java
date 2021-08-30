@@ -1,4 +1,4 @@
-package com.erahub.jlja.common.dto;
+package com.erahub.jlja.authoritymanage.dto;
 
 import lombok.Data;
 

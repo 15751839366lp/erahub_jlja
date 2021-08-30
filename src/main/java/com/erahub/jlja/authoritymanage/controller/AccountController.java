@@ -1,19 +1,17 @@
-package com.erahub.jlja.login.controller;
+package com.erahub.jlja.authoritymanage.controller;
 
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.map.MapUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.erahub.jlja.common.dto.LoginDto;
+import com.erahub.jlja.authoritymanage.dto.LoginDto;
 import com.erahub.jlja.common.lang.Result;
-import com.erahub.jlja.login.entity.User;
-import com.erahub.jlja.login.service.UserService;
+import com.erahub.jlja.authoritymanage.entity.User;
+import com.erahub.jlja.authoritymanage.service.UserService;
 import com.erahub.jlja.util.JwtUtils;
 import com.erahub.jlja.util.ShiroUtils;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

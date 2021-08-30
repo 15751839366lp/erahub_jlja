@@ -1,6 +1,6 @@
 package com.erahub.jlja.util;
 
-import com.erahub.jlja.login.entity.User;
+import com.erahub.jlja.authoritymanage.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;

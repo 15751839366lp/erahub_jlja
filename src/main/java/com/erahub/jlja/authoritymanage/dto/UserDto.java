@@ -1,4 +1,4 @@
-package com.erahub.jlja.common.dto.authoritymanage;
+package com.erahub.jlja.authoritymanage.dto;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;

@@ -1,8 +1,8 @@
-package com.erahub.jlja.login.controller;
+package com.erahub.jlja.authoritymanage.controller;
 
-import com.erahub.jlja.common.dto.authoritymanage.UserDto;
+import com.erahub.jlja.authoritymanage.dto.UserDto;
 import com.erahub.jlja.common.lang.Result;
-import com.erahub.jlja.login.service.UserService;
+import com.erahub.jlja.authoritymanage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
