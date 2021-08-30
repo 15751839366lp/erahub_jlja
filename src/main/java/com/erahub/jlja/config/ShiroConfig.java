@@ -69,6 +69,7 @@ public class ShiroConfig {
         Map<String, String> filterMap = new LinkedHashMap<>();
 
         filterMap.put("/account/logout", "jwt");
+        filterMap.put("/account/getUserInfo", "jwt");
         chainDefinition.addPathDefinitions(filterMap);
         return chainDefinition;
     }

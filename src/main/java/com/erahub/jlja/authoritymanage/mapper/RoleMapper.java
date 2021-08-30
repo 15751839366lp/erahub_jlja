@@ -1,12 +1,12 @@
 package com.erahub.jlja.authoritymanage.mapper;
 
+import com.erahub.jlja.authoritymanage.dto.RoleDto;
 import com.erahub.jlja.authoritymanage.dto.UserDto;
+import com.erahub.jlja.authoritymanage.entity.Permission;
 import com.erahub.jlja.authoritymanage.entity.Role;
-import com.erahub.jlja.authoritymanage.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -14,15 +14,14 @@ import java.util.Map;
  * </p>
  *
  * @author lipeng
- * @since 2021-08-23
+ * @since 2021-08-30
  */
-public interface UserMapper extends BaseMapper<User> {
+public interface RoleMapper extends BaseMapper<Role> {
 
     /**
-     * 根据用户获取角色信息
-     * @param userDto
+     * 根据角色获取权限信息
+     * @param roleDto
      * @return
      */
-    List<Role> getUserRoles(UserDto userDto);
-
+    List<Permission> getUserPermissions(RoleDto roleDto);
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erahub.jlja.authoritymanage.mapper.RoleMapper">
+    <resultMap id="PermissionMap" type="com.erahub.jlja.authoritymanage.entity.Permission">
+        <id property="id" column="id"/>
+        <result property="permission" column="permission"/>
+        <result property="url" column="url"/>
+        <result property="isMenu" column="is_menu"/>
+        <result property="pid" column="pid"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="deleteTime" column="delete_time"/>
+        <result property="deleted" column="deleted"/>
+        <result property="locked" column="locked"/>
+    </resultMap>
+
+    <select id="getUserPermissions" resultMap="PermissionMap" parameterType="com.erahub.jlja.authoritymanage.dto.RoleDto">
+        SELECT DISTINCT sp.id,sp.permission,sp.url,sp.is_menu,sp.pid
+        from sys_role_permission srp,sys_role sr,sys_permission sp
+        where sr.id = #{id} and sp.deleted = 0 and sp.locked = 0 and sp.id = srp.permission_id and sr.id = srp.role_id
+    </select>
+</mapper>

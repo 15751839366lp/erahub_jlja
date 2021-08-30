@@ -5,6 +5,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.map.MapUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.erahub.jlja.authoritymanage.dto.LoginDto;
+import com.erahub.jlja.authoritymanage.vo.UserVo;
 import com.erahub.jlja.common.lang.Result;
 import com.erahub.jlja.authoritymanage.entity.User;
 import com.erahub.jlja.authoritymanage.service.UserService;
@@ -59,11 +60,12 @@ public class AccountController {
      *
      */
     @CrossOrigin
-    @PostMapping("/getIndexData")
-    public Result getIndexData() {
+    @PostMapping("/getUserInfo")
+    public Result getUserInfo() {
         User user = ShiroUtils.getUserFromSubject();
+        UserVo userVo = userService.getUserInfo(user);
         return Result.succ(MapUtil.builder()
-                .put("user",user)
+                .put("user",userVo)
                 .map()
         );
     }
