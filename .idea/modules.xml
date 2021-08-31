@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/jlja.iml" filepath="$PROJECT_DIR$/jlja.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/jlja_java.iml" filepath="$PROJECT_DIR$/.idea/jlja_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../jlja_vue/jlja_vue.iml" filepath="$PROJECT_DIR$/../jlja_vue/jlja_vue.iml" />
     </modules>
   </component>
 </project>

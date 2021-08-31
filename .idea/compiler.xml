@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="jlja" />
+        <module name="jlja_java" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jlja" target="1.8" />
+      <module name="jlja_java" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
