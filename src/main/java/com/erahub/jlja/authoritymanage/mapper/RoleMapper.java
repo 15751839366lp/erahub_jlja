@@ -5,6 +5,7 @@ import com.erahub.jlja.authoritymanage.dto.UserDto;
 import com.erahub.jlja.authoritymanage.entity.Permission;
 import com.erahub.jlja.authoritymanage.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,5 +24,5 @@ public interface RoleMapper extends BaseMapper<Role> {
      * @param roleDtos
      * @return
      */
-    List<Permission> getUserPermissions(List<RoleDto> roleDtos);
+    List<Permission> getUserPermissions(@Param("roleDtos")List<RoleDto> roleDtos);
 }

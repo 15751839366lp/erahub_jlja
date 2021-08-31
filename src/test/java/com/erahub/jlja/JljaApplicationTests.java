@@ -42,15 +42,15 @@ class JljaApplicationTests {
 
 //        Role role = new Role();
 //        role.setRole("superadmin");
-//        roleService.save(role);
+//        roleService.save(role);s
 
-        UserDto userDto = new UserDto();
-        userDto.setId(3L);
-        List<Role> roles = userMapper.getUserRoles(userDto);
-        roles.forEach(role -> {
-            RoleDto roleDto = new RoleDto();
-            BeanUtils.copyProperties(role,roleDto);
-            System.out.println(roleDto.toString());
-        });
+//        UserDto userDto = new UserDto();
+//        userDto.setId(3L);
+//        List<Role> roles = userMapper.getUserRoles(userDto);
+//        roles.forEach(role -> {
+//            RoleDto roleDto = new RoleDto();
+//            BeanUtils.copyProperties(role,roleDto);
+//            System.out.println(roleDto.toString());
+//        });
     }
 }
