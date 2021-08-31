@@ -11,8 +11,11 @@
         <result property="locked" column="locked"/>
     </resultMap>
 
-    <select id="getUserRoles" resultMap="RoleMap" parameterType="com.erahub.jlja.authoritymanage.dto.UserDto">
+    <select id="getUsersRoles" resultMap="RoleMap" parameterType="com.erahub.jlja.authoritymanage.dto.UserDto">
         select distinct sr.id,sr.role from sys_user_role sur,sys_user su,sys_role sr
-        where su.id = #{id} and sr.deleted = 0 and sr.locked = 0 and su.id = sur.user_id and sr.id = sur.role_id
+        where sr.deleted = 0 and sr.locked = 0 and su.id = sur.user_id and sr.id = sur.role_id
+        <foreach collection="userDtos" index="i" item="userDto" open="and (" close=")" separator=",">
+            #{userDto.id}
+        </foreach>
     </select>
 </mapper>

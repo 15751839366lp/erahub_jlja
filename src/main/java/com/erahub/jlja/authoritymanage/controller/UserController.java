@@ -21,6 +21,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /**
+     * 获取用户列表（可条件查询）
+     * @param userDto
+     * @return
+     */
     @CrossOrigin
     @PostMapping("/getUserList")
     public Result getUserList(@RequestBody UserDto userDto){

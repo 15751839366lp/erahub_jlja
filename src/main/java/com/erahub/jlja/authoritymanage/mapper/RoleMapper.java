@@ -20,8 +20,8 @@ public interface RoleMapper extends BaseMapper<Role> {
 
     /**
      * 根据角色获取权限信息
-     * @param roleDto
+     * @param roleDtos
      * @return
      */
-    List<Permission> getUserPermissions(RoleDto roleDto);
+    List<Permission> getUserPermissions(List<RoleDto> roleDtos);
 }

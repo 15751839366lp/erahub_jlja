@@ -20,9 +20,9 @@ public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 根据用户获取角色信息
-     * @param userDto
+     * @param userDtos
      * @return
      */
-    List<Role> getUserRoles(UserDto userDto);
+    List<Role> getUsersRoles(List<UserDto> userDtos);
 
 }
