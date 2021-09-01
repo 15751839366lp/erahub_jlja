@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JljaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JljaApplication.class, args);
+        SpringApplication.run(JljaApplication.class, args); 
     }
 
 }

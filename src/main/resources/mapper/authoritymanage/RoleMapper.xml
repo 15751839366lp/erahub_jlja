@@ -18,7 +18,7 @@
     </resultMap>
 
     <select id="getUserPermissions" resultMap="PermissionMap" parameterType="com.erahub.jlja.authoritymanage.dto.RoleDto">
-        SELECT DISTINCT sp.id,sp.permission,sp.url,sp.is_menu,sp.perm,sp.pid
+        SELECT DISTINCT sp.id,sp.permission_id,sp.permission,sp.url,sp.is_menu,sp.perm,sp.icon,sp.pid
         from sys_role_permission srp,sys_role sr,sys_permission sp
         where sp.deleted = 0 and sp.locked = 0 and sp.id = srp.permission_id and sr.id = srp.role_id
         <foreach collection="roleDtos" index="i" item="roleDto" open="and (" close=")" separator=",">

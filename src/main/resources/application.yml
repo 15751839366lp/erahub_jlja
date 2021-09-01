@@ -51,5 +51,5 @@ erahub:
     # 加密秘钥
     secret: f4e2e45682348f86b67cde852c0f9eb5
     # token有效时长，7天，单位秒
-    expire: 10
+    expire: 604800
     header: Authorization

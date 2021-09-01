@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * <p>
@@ -83,7 +84,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             });
 
             //生成菜单
-            menus = listMapUtils.listToTree(permissions, "id", "pid", "subs");
+            menus = listMapUtils.listToTree(permissions.stream().filter(permission -> permission.getIsMenu()).collect(Collectors.toList()),
+                    "id", "pid", "subs");
             userVo.setMenus(menus);
         }catch (Exception e){
             e.printStackTrace();
