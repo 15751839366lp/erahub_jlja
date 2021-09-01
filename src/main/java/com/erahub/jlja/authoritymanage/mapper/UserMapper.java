@@ -17,7 +17,7 @@ import java.util.Map;
  * @author lipeng
  * @since 2021-08-23
  */
-public interface UserMapper extends BaseMapper<User> {
+public interface    UserMapper extends BaseMapper<User> {
 
     /**
      * 根据用户获取角色信息

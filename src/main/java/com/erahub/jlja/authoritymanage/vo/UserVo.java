@@ -82,4 +82,6 @@ public class UserVo {
 
     private List<Permission> permissions;
 
+    private Object menus;
+
 }

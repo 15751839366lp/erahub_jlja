@@ -3,9 +3,12 @@
 <mapper namespace="com.erahub.jlja.authoritymanage.mapper.RoleMapper">
     <resultMap id="PermissionMap" type="com.erahub.jlja.authoritymanage.entity.Permission">
         <id property="id" column="id"/>
+        <result property="permissionId" column="permission_id"/>
         <result property="permission" column="permission"/>
         <result property="url" column="url"/>
         <result property="isMenu" column="is_menu"/>
+        <result property="perm" column="perm"/>
+        <result property="icon" column="icon"/>
         <result property="pid" column="pid"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
@@ -15,7 +18,7 @@
     </resultMap>
 
     <select id="getUserPermissions" resultMap="PermissionMap" parameterType="com.erahub.jlja.authoritymanage.dto.RoleDto">
-        SELECT DISTINCT sp.id,sp.permission,sp.url,sp.is_menu,sp.pid
+        SELECT DISTINCT sp.id,sp.permission,sp.url,sp.is_menu,sp.perm,sp.pid
         from sys_role_permission srp,sys_role sr,sys_permission sp
         where sp.deleted = 0 and sp.locked = 0 and sp.id = srp.permission_id and sr.id = srp.role_id
         <foreach collection="roleDtos" index="i" item="roleDto" open="and (" close=")" separator=",">

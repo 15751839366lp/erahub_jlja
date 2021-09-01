@@ -1,5 +1,7 @@
 package com.erahub.jlja.authoritymanage.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.erahub.jlja.authoritymanage.dto.RoleDto;
 import com.erahub.jlja.authoritymanage.dto.UserDto;
 import com.erahub.jlja.authoritymanage.entity.Permission;
@@ -15,10 +17,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -41,7 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     ListMapUtils listMapUtils;
 
     /**
-     * 获取用户数据
+     * 获取当前登录用户数据
      * @param user
      */
     @Override
@@ -49,6 +49,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         UserVo userVo = new UserVo();
         UserDto userDto = new UserDto();
         List<RoleDto> roleDtos = new ArrayList<>();
+        Object menus = new Object();
         try{
             BeanUtils.copyProperties(user,userVo);
             userDto.setId(user.getId());
@@ -60,6 +61,30 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             //批量搜索
             List<Permission> permissions = roleMapper.getUserPermissions(roleDtos);
             userVo.setPermissions(permissions);
+            //按节点排序
+            Collections.sort(permissions, new Comparator<Permission>() {
+                public int compare(Permission arg0, Permission arg1) {
+                    Long pid0 = arg0.getPid();
+                    Long pid1 = arg1.getPid();
+                    Long permissionId0 = arg0.getPermissionId();
+                    Long permissionId1 = arg1.getPermissionId();
+                    if (pid0 > pid1) {
+                        return 1;
+                    } else if (pid0 == pid1) {
+                        if(permissionId0 > permissionId1){
+                            return 1;
+                        }else {
+                            return 0;
+                        }
+                    } else {
+                        return -1;
+                    }
+                }
+            });
+
+            //生成菜单
+            menus = listMapUtils.listToTree(permissions, "id", "pid", "subs");
+            userVo.setMenus(menus);
         }catch (Exception e){
             e.printStackTrace();
         }

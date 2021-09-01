@@ -36,9 +36,13 @@ public class Permission implements Serializable {
     private Long id;
 
     /**
+     * 权限编号
+     */
+    private Long permissionId;
+
+    /**
      * 权限名称
      */
-    @NotBlank(message = "用户名不能为空")
     private String permission;
 
     /**
@@ -50,6 +54,16 @@ public class Permission implements Serializable {
      * 是否为菜单
      */
     private Boolean isMenu;
+
+    /**
+     * 权限标识
+     */
+    private String perm;
+
+    /**
+     * 图标
+     */
+    private String icon;
 
     /**
      * 父节点（根节点为0）
