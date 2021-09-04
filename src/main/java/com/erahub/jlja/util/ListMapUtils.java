@@ -46,7 +46,7 @@ public class ListMapUtils<T> {
         //遍历结果集
         for (int j = 0; j < arr.size(); j++) {
             //单条记录
-            JSONObject aVal = (JSONObject   ) arr.get(j);
+            JSONObject aVal = (JSONObject) arr.get(j);
             //在hash中取出key为单条记录中pid的值
             JSONObject hashVP = (JSONObject) hash.get(aVal.get(pid).toString());
             //如果记录的pid存在，则说明它有父节点，将她添加到孩子节点的集合中
