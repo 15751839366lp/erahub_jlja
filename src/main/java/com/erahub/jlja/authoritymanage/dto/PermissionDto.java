@@ -35,6 +35,11 @@ public class PermissionDto implements Serializable {
     private Boolean isMenu;
 
     /**
+     * 是否有子节点
+     */
+    private Boolean hasChildren;
+
+    /**
      * 权限标识
      */
     private String perm;
