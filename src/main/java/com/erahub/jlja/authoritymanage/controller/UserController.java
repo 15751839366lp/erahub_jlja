@@ -1,13 +1,21 @@
 package com.erahub.jlja.authoritymanage.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.erahub.jlja.authoritymanage.dto.RoleDto;
 import com.erahub.jlja.authoritymanage.dto.UserDto;
 import com.erahub.jlja.authoritymanage.entity.User;
 import com.erahub.jlja.common.lang.Result;
 import com.erahub.jlja.authoritymanage.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -36,6 +44,17 @@ public class UserController {
     }
 
     /**
+     * 新增用户信息
+     * @param userDto
+     * @return
+     */
+    @CrossOrigin
+    @PostMapping("/addUserData")
+    public Result addUserData(@RequestBody UserDto userDto){
+        return userService.saveUser(userDto);
+    }
+
+    /**
      * 更新用户信息
      * @param userDto
      * @return
@@ -43,7 +62,7 @@ public class UserController {
     @CrossOrigin
     @PostMapping("/updateUserData")
     public Result updateUserData(@RequestBody UserDto userDto){
-        return Result.succ(null);
+        return userService.updateUser(userDto);
     }
 
     /**
@@ -54,6 +73,17 @@ public class UserController {
     @CrossOrigin
     @PostMapping("/deleteUserData")
     public Result deleteUserData(@RequestBody List<UserDto> userDtos){
-        return Result.succ(null);
+        return userService.deleteUsers(userDtos);
+    }
+
+    /**
+     * 赋予角色
+     * @param userDto
+     * @return
+     */
+    @CrossOrigin
+    @PostMapping("/authorizeRole")
+    public Result authorizeRole(@RequestBody UserDto userDto){
+        return userService.authorizeRole(userDto);
     }
 }

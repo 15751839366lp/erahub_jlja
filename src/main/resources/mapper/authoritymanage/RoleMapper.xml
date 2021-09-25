@@ -22,8 +22,22 @@
         SELECT DISTINCT sp.id,sp.permission_id,sp.permission,sp.url,sp.is_menu,sp.has_children,sp.perm,sp.icon,sp.pid
         from sys_role_permission srp,sys_role sr,sys_permission sp
         where sp.deleted = 0 and sp.locked = 0 and sp.id = srp.permission_id and sr.id = srp.role_id
-        <foreach collection="roleDtos" index="i" item="roleDto" open="and (" close=")" separator=",">
+        <foreach collection="roleDtos" index="i" item="roleDto" open="and sr.id in (" close=")" separator=",">
             #{roleDto.id}
         </foreach>
     </select>
+
+    <delete id="deleteAuthorityPermission" parameterType="java.util.List">
+        delete from sys_role_permission where
+        <foreach collection="list" index="i" item="id" open="role_id in (" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <insert id="authorizePermission" parameterType="com.erahub.jlja.authoritymanage.dto.RoleDto">
+        insert into sys_role_permission(role_id,permission_id) values
+        <foreach collection ="permissionDtos" item="permission" separator =",">
+            (#{id}, #{permission.id})
+        </foreach >
+    </insert>
 </mapper>

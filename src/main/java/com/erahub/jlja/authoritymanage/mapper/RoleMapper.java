@@ -25,4 +25,16 @@ public interface RoleMapper extends BaseMapper<Role> {
      * @return
      */
     List<Permission> getUserPermissions(@Param("roleDtos")List<RoleDto> roleDtos);
+
+    /**
+     * 删除赋予权限
+     * @param ids
+     */
+    Integer deleteAuthorityPermission(List<Long> ids);
+
+    /**
+     * 赋予权限
+     * @param roleDto
+     */
+    Integer authorizePermission(RoleDto roleDto);
 }

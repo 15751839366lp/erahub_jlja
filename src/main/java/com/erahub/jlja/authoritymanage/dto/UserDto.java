@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class UserDto implements Serializable {
@@ -106,4 +107,8 @@ public class UserDto implements Serializable {
      */
     private Boolean locked;
 
+    /**
+     * 赋予角色
+     */
+    private List<RoleDto> roleDtos;
 }

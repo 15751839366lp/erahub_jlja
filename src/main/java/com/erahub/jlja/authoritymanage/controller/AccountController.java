@@ -12,6 +12,7 @@ import com.erahub.jlja.authoritymanage.service.UserService;
 import com.erahub.jlja.util.JwtUtils;
 import com.erahub.jlja.util.ShiroUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

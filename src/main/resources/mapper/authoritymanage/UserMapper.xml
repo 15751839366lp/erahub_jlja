@@ -14,8 +14,23 @@
     <select id="getUsersRoles" resultMap="RoleMap" parameterType="com.erahub.jlja.authoritymanage.dto.UserDto">
         select distinct sr.id,sr.role from sys_user_role sur,sys_user su,sys_role sr
         where sr.deleted = 0 and sr.locked = 0 and su.id = sur.user_id and sr.id = sur.role_id
-        <foreach collection="userDtos" index="i" item="userDto" open="and (" close=")" separator=",">
+        <foreach collection="userDtos" index="i" item="userDto" open="and su.id in (" close=")" separator=",">
             #{userDto.id}
         </foreach>
     </select>
+
+    <delete id="deleteAuthorityRole" parameterType="java.util.List">
+        delete from sys_user_role where
+        <foreach collection="list" index="i" item="id" open="user_id in (" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <insert id="authorizeRole" parameterType="com.erahub.jlja.authoritymanage.dto.UserDto">
+        insert into sys_user_role(user_id, role_id) values
+        <foreach collection ="roleDtos" item="role" separator =",">
+            (#{id}, #{role.id})
+        </foreach >
+    </insert>
+
 </mapper>

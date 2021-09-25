@@ -3,6 +3,7 @@ package com.erahub.jlja.shiro;
 import com.erahub.jlja.authoritymanage.entity.User;
 import com.erahub.jlja.authoritymanage.service.UserService;
 import com.erahub.jlja.util.JwtUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -56,5 +57,13 @@ public class AccountRealm extends AuthorizingRealm {
 
 
         return new SimpleAuthenticationInfo(profile,jwtToken.getCredentials(),getName());
+    }
+
+    /**
+     * 清理权限缓存
+     */
+    public void clearCachedAuthorization(){
+        //清空权限缓存
+        clearCachedAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
     }
 }
