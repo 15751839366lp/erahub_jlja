@@ -14,6 +14,9 @@
     <select id="getUsersRoles" resultMap="RoleMap" parameterType="com.erahub.jlja.authoritymanage.dto.UserDto">
         select distinct sr.id,sr.role from sys_user_role sur,sys_user su,sys_role sr
         where sr.deleted = 0 and sr.locked = 0 and su.id = sur.user_id and sr.id = sur.role_id
+        <if test="userDtos == null or userDtos.size() == 0">
+            and 0 = 1
+        </if>
         <foreach collection="userDtos" index="i" item="userDto" open="and su.id in (" close=")" separator=",">
             #{userDto.id}
         </foreach>
