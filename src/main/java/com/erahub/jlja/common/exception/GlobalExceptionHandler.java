@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -25,8 +26,9 @@ public class GlobalExceptionHandler {
         return Result.fail(e.getMessage());
     }
 
+    @ResponseBody
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    @ExceptionHandler(value = ShiroException.class)
+    @ExceptionHandler(ShiroException.class)
     public Result handler(ShiroException e){
         log.error("运行时异常：---------------------{}",e);
         return Result.fail(401,e.getMessage(),null);

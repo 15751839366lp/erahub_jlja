@@ -47,6 +47,9 @@ public class AccountController {
         if(!user.getPassword().equals(loginDto.getPassword())) {
             return Result.fail("密码错误");
         }
+        if(user.getLocked()){
+            return Result.fail("用户已被锁定");
+        }
         String jwt = jwtUtils.generateToken(user.getId());
         response.setHeader("Authorization", jwt);
         response.setHeader("Access-Control-Expose-Headers", "Authorization");
@@ -63,6 +66,7 @@ public class AccountController {
     @CrossOrigin
     @PostMapping("/getUserInfo")
     public Result getUserInfo() {
+
         User user = ShiroUtils.getUserFromSubject();
         UserVo userVo = userService.getUserInfo(user);
         return Result.succ(MapUtil.builder()
