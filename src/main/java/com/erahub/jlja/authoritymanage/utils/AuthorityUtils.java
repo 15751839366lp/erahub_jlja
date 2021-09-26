@@ -18,6 +18,9 @@ public class AuthorityUtils {
         if(!StringUtils.isEmpty(userDto.getUsername())){
             wrapper.eq("username", userDto.getUsername());
         }
+        if(!StringUtils.isEmpty(userDto.getTrueName())){
+            wrapper.eq("true_name", userDto.getTrueName());
+        }
         if(!StringUtils.isEmpty(userDto.getDeleted())){
             wrapper.eq("deleted", userDto.getDeleted());
         }else{

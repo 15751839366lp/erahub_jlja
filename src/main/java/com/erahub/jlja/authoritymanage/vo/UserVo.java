@@ -29,6 +29,11 @@ public class UserVo {
     private String username;
 
     /**
+     * 真实姓名
+     */
+    private String trueName;
+
+    /**
      * 密码
      */
     private String password;

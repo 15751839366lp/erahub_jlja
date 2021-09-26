@@ -44,6 +44,11 @@ public class User implements Serializable {
     private String username;
 
     /**
+     * 真实姓名
+     */
+    private String trueName;
+
+    /**
      * 密码
      */
     @NotBlank(message = "密码不能为空")
